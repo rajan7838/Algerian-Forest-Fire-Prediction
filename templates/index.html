@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FWI Prediction</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; }
+        .box {
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px gray;
+        }
+        input, button {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+        }
+        h2, h3 { text-align: center; }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <h2>FWI Prediction</h2>
+
+    <form method="POST">
+        <input type="number" step="any" name="Temperature" placeholder="Temperature" required>
+        <input type="number" step="any" name="RH" placeholder="RH" required>
+        <input type="number" step="any" name="Ws" placeholder="Wind Speed" required>
+        <input type="number" step="any" name="Rain" placeholder="Rain" required>
+        <input type="number" step="any" name="FFMC" placeholder="FFMC" required>
+        <input type="number" step="any" name="DMC" placeholder="DMC" required>
+        <input type="number" step="any" name="ISI" placeholder="ISI" required>
+        <input type="number" step="any" name="Classes" placeholder="Classes (0/1)" required>
+        <input type="number" step="any" name="Region" placeholder="Region (0/1)" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result is not none %}
+        <h3>🔥 Fire Weather Index (FWI): {{ result | round(2) }}</h3>
+    {% endif %}
+</div>
+</body>
+</html>
